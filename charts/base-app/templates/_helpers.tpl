@@ -52,7 +52,7 @@
 {{- if .Values.image.url }}
 {{- .Values.image.url }}
 {{- else }}
-{{ .Values.image.registry }}/{{ include "base-app.appId" . }}{{ .Values.deploy.service }}:{{ .Values.image.tag | default .Values.deploy.version }}
+{{- .Values.image.registry }}/{{ include "base-app.appId" . }}{{ .Values.deploy.service }}:{{ .Values.image.tag | default .Values.deploy.version }}
 {{- end }}
 {{- end }}
 

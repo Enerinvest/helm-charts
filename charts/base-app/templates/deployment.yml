@@ -39,7 +39,7 @@ spec:
         - name: {{ include "base-app.serviceId" . }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ include "base-app.imageUrl" . }}"
+          image: {{ include "base-app.imageUrl" . }}
           {{- if .Values.image.workingDir }}
           workingDir: {{ .Values.image.workingDir | quote }}
           {{- end }}
