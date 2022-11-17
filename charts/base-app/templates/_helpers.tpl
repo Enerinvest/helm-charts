@@ -99,11 +99,11 @@ Common labels
 {{- define "base-app.labels" -}}
 helm.sh/chart: {{ include "base-app.chart" . }}
 {{ include "base-app.selectorLabels" . }}
-app.kubernetes.io/managed-by: {{ .Release.Service }}
-app.kubernetes.io/app-project: {{ .Values.deploy.project  }}
-app.kubernetes.io/app-name: {{ .Values.deploy.app  }}
-app.kubernetes.io/app-service: {{ .Values.deploy.service  }}
-app.kubernetes.io/app-instance: {{ .Values.deploy.instance  }}
+app.kubernetes.io/managed-by: {{ .Release.Service | quote  }}
+app.kubernetes.io/app-project: {{ .Values.deploy.project | quote  }}
+app.kubernetes.io/app-name: {{ .Values.deploy.app | quote  }}
+app.kubernetes.io/app-service: {{ .Values.deploy.service | quote  }}
+app.kubernetes.io/app-instance: {{ .Values.deploy.instance | quote  }}
 app.kubernetes.io/app-version: {{ .Values.deploy.version | quote }}
 {{- end }}
 
@@ -111,8 +111,8 @@ app.kubernetes.io/app-version: {{ .Values.deploy.version | quote }}
 Selector labels
 */}}
 {{- define "base-app.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "base-app.name" . }}
-app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/name: {{ include "base-app.name" . | quote }}
+app.kubernetes.io/instance: {{ .Release.Name | quote }}
 {{- end }}
 
 {{/*
