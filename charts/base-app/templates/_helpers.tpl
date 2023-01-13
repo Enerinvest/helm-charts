@@ -42,7 +42,7 @@
 {{- end -}}
 {{- .Values.deploy.instance -}}
 {{- if .Values.publish.addApp }}
--{{ .Values.deploy.app }}
+-{{- .Values.deploy.app -}}
 {{- end -}}
 {{- if .Values.publish.tier }}
 {{- .Values.publish.tier }}
