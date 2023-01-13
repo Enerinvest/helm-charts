@@ -40,7 +40,10 @@
 {{- if .Values.publish.addProject }}
 {{- .Values.deploy.project }}-
 {{- end }}
-{{- .Values.deploy.instance }}-{{ .Values.deploy.app }}
+{{- .Values.deploy.instance }}
+{{- if .Values.publish.addApp }}
+-{{ .Values.deploy.app }}
+{{- end }}
 {{- if .Values.publish.tier }}
 {{- .Values.publish.tier }}
 {{- end -}}
@@ -75,7 +78,11 @@
 
 
 {{- define "base-app.db_connection.user" -}}
+{{- if .Values.db.separateDbPerInstance }}
+{{- default (printf "%s_%s" .Values.deploy.project .Values.deploy.instance) .Values.db.connection.user }}
+{{- else }}
 {{- default (include "base-app.appGroupUnderscore" .) .Values.db.connection.user }}
+{{- end }}
 {{- end }}
 
 {{- define "base-app.db_connection.name" -}}

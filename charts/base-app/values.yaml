@@ -1,5 +1,6 @@
 publish:
   addProject: true
+  addApp: true
   url: ""
 #  tier: back
 
@@ -29,6 +30,7 @@ delayedjob:
   command: ["/app/bin/delayed_job","run"]
 
 db:
+  separateDbPerInstance: true
   vars:
     prefix: "DB_"
     user: "USERNAME"
