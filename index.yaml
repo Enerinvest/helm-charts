@@ -3,6 +3,16 @@ entries:
   base-app:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-01-13T23:53:18.536551923Z"
+    description: Enerinvest App
+    digest: f89435e6b6468b301f2fa494b3e23554193b2af477d140b295f14b3520249c76
+    name: base-app
+    type: application
+    urls:
+    - https://github.com/Enerinvest/helm-charts/releases/download/base-app-0.0.15/base-app-0.0.15.tgz
+    version: 0.0.15
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-01-13T23:33:14.828846578Z"
     description: Enerinvest App
     digest: a69b86880d7bde38791b0ab6de3d880f373e0c44da8beee69b6d9460ea1beec6
@@ -121,4 +131,4 @@ entries:
     urls:
     - https://github.com/Enerinvest/helm-charts/releases/download/base-app-0.0.3/base-app-0.0.3.tgz
     version: 0.0.3
-generated: "2023-01-13T23:33:14.82891488Z"
+generated: "2023-01-13T23:53:18.536630228Z"
