@@ -34,17 +34,17 @@
 
 
 {{- define "base-app.hostname" -}}
-{{- if .Values.publish.url }}
+{{- if .Values.publish.url -}}
 {{- .Values.publish.url }}
 {{- else }}
-{{- if .Values.publish.addProject }}
+{{- if .Values.publish.addProject -}}
 {{- .Values.deploy.project }}-
 {{- end -}}
 {{- .Values.deploy.instance -}}
-{{- if .Values.publish.addApp }}
+{{- if .Values.publish.addApp -}}
 -{{- .Values.deploy.app -}}
 {{- end -}}
-{{- if .Values.publish.tier }}
+{{- if .Values.publish.tier -}}
 {{- .Values.publish.tier }}
 {{- end -}}
 .{{- .Values.publish.baseUrl -}}
@@ -127,7 +127,7 @@ Create the name of the service account to use
 */}}
 {{- define "base-app.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "base-app.serviceId" .) .Values.serviceAccount.name }}
+{{- default (printf "%s-%s" .Values.deploy.project .Values.deploy.environmentGroup) .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
 
