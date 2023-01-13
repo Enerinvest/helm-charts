@@ -114,6 +114,13 @@ app.kubernetes.io/app-instance: {{ .Values.deploy.instance | quote  }}
 app.kubernetes.io/app-version: {{ .Values.deploy.version | quote }}
 {{- end }}
 
+{{- define "base-app.mainlabels" -}}
+helm.sh/chart: {{ include "base-app.chart" . }}
+{{ include "base-app.selectorLabels" . }}
+app.kubernetes.io/managed-by: {{ .Release.Service | quote  }}
+app.kubernetes.io/app-project: {{ .Values.deploy.project | quote  }}
+{{- end }}
+
 {{/*
 Selector labels
 */}}
