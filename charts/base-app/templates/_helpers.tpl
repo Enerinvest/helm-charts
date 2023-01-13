@@ -50,7 +50,7 @@
 
 {{- define "base-app.imageUrl" -}}
 {{- if .Values.image.url }}
-{{- .Values.image.url }}
+{{- .Values.image.url }}:{{ .Values.image.tag | default .Values.deploy.version }}
 {{- else }}
 {{- .Values.image.registry }}/{{ include "base-app.appId" . }}{{ .Values.deploy.service }}:{{ .Values.image.tag | default .Values.deploy.version }}
 {{- end }}
