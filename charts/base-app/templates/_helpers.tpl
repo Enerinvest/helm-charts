@@ -39,8 +39,8 @@
 {{- else }}
 {{- if .Values.publish.addProject }}
 {{- .Values.deploy.project }}-
-{{- end }}
-{{- .Values.deploy.instance }}
+{{- end -}}
+{{- .Values.deploy.instance -}}
 {{- if .Values.publish.addApp }}
 -{{ .Values.deploy.app }}
 {{- end -}}
