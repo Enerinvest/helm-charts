@@ -43,7 +43,7 @@
 {{- .Values.deploy.instance }}
 {{- if .Values.publish.addApp }}
 -{{ .Values.deploy.app }}
-{{- end }}
+{{- end -}}
 {{- if .Values.publish.tier }}
 {{- .Values.publish.tier }}
 {{- end -}}
@@ -136,7 +136,7 @@ Create the name of the service account to use
 {{- if .Values.serviceAccount.iamRoleName }}
 {{- .Values.serviceAccount.iamRoleName }}
 {{- else }}
-{{- .Values.serviceAccount.iamRolePrefix }}{{ .Values.namespace }}-{{ .Values.deploy.project }}-{{ .Values.deploy.environmentGroup }}
+{{- .Values.serviceAccount.iamRolePrefix }}{{ .Values.deploy.namespace }}-{{ .Values.deploy.project }}-{{ .Values.deploy.environmentGroup }}
 {{- end }}
 {{- end }}
 
