@@ -128,6 +128,10 @@ Create the name of the service account to use
 {{- define "base-app.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
 {{- default (printf "%s-%s" .Values.deploy.project .Values.deploy.environmentGroup) .Values.serviceAccount.name }}
+{{- else }}
+{{- if .Values.serviceAccount.use }}
+{{- default (printf "%s-%s" .Values.deploy.project .Values.deploy.environmentGroup) .Values.serviceAccount.name }}
+{{- end }}
 {{- end }}
 {{- end }}
 
