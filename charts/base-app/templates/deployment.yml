@@ -28,7 +28,7 @@ spec:
     spec:
       {{- if .Values.serviceAccount.use }}
       serviceAccountName: {{ include "base-app.serviceAccountName" . }}
-      {{ -end }}
+      {{- end }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       {{- if .Values.efs.enabled }}
