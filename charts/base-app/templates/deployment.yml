@@ -95,6 +95,9 @@ spec:
             - configMapRef:
                 name: {{ include "base-app.instanceId" . }}-config
                 optional: true
+            - configMapRef:
+                name: {{ include "base-app.serviceId" . }}-config
+                optional: true                
             - secretRef:
                 name: {{ include "base-app.instanceId" . }}-secrets
                 optional: true
