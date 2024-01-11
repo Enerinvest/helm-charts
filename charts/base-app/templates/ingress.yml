@@ -52,7 +52,11 @@ spec:
         {{- range .hosts }}
         - {{ . | quote }}
         {{- end }}
+      {{ if .secretName }}
       secretName: {{ .secretName }}
+      {{- else }}
+      secretName: {{ include "base-app.serviceId" .  }}
+      {{- end }}
     {{- end }}
   {{- else }}
   tls:
