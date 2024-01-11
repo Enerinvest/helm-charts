@@ -55,7 +55,7 @@ spec:
       {{ if .secretName }}
       secretName: {{ .secretName }}
       {{- else }}
-      secretName: {{ include "base-app.serviceId" .  }}
+      secretName: {{ include "base-app.serviceId" $  }}
       {{- end }}
     {{- end }}
   {{- else }}
