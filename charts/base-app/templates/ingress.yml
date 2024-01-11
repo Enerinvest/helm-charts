@@ -30,6 +30,9 @@ metadata:
         if ($request_uri ~ "api") {
           set $auth off;
         }
+        if ($request_uri ~ ".well-known") {
+          set $auth off;
+        }        
         if ($request_uri !~ "api") {
           set $auth "auth required";
         }
