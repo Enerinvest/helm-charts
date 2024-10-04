@@ -155,6 +155,10 @@ spec:
               value: "{{- include "base-app.mailFromDomain" . }}"
             - name: S3_BUCKET
               value: "{{- include "base-app.s3Bucket" . }}"
+            {{- if .Values.redis.enabled }}
+            - name: REDIS_URL
+              value: {{ include "base-app.serviceId" . }}-redis
+            {{- end }}
               {{- if .Values.db.connection.host }}
             - name: {{ .Values.db.vars.prefix }}{{ .Values.db.vars.host }}
               value: {{ .Values.db.connection.host | quote }}
