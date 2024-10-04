@@ -128,3 +128,10 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+redis:
+  enabled: false
+
+aws_secrets:
+  enabled: false
+  entries: []

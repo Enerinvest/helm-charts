@@ -23,7 +23,6 @@ spec:
       {{- end }}
       labels:
         app.kubernetes.io/service-type: public             
-        {{- include "base-app.selectorLabels" . | nindent 8 }}
         {{- include "base-app.labels" . | nindent 8 }}
     spec:
       {{- if .Values.serviceAccount.use }}
@@ -36,7 +35,16 @@ spec:
       - name: appdata
         persistentVolumeClaim:
           claimName: efs-appdata-{{ include "base-app.appGroup" . }}
-      {{- end }}        
+      {{- end }}   
+      {{- if .Values.aws_secrets.enabled }}      
+      volumes:
+      - name: {{ include "base-app.serviceId" . }}-secrets 
+        csi:
+          driver: secrets-store.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: {{ include "base-app.serviceId" . }}-secrets             
+      {{- end }}   
       containers:
         - name: {{ include "base-app.serviceId" . }}
           securityContext:
@@ -168,6 +176,12 @@ spec:
           - name: appdata
             mountPath: /app/public/system
           {{- end }}
+          {{- if .Values.aws_secrets.enabled }}      
+          volumeMounts:
+          - name: {{ include "base-app.serviceId" . }}-secrets
+            mountPath: "/app-secrets"
+            readOnly: true             
+          {{- end }}   
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
