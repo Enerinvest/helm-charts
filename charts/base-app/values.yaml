@@ -135,3 +135,6 @@ redis:
 aws_secrets:
   enabled: false
   entries: []
+  mountPath: /var/run/secrets/enerinvest.com
+
+useDefaultConfigMaps: true

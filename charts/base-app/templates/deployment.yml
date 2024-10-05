@@ -88,6 +88,10 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           envFrom:
             - configMapRef:
+                name: {{ include "base-app.instanceId" . }}-config
+                optional: true
+            {{- if .Values.useDefaultConfigMaps }}
+            - configMapRef:
                 name: enerin-app-config-default
             - configMapRef:
                 name: enerin-app-config-{{ .Values.deploy.service }}
@@ -101,9 +105,6 @@ spec:
                 name: {{ include "base-app.appGroup" . }}-config
                 optional: true
             - configMapRef:
-                name: {{ include "base-app.instanceId" . }}-config
-                optional: true
-            - configMapRef:
                 name: {{ include "base-app.serviceId" . }}-config
                 optional: true                
             - secretRef:
@@ -112,6 +113,7 @@ spec:
             - configMapRef:
                 name: all-{{ .Values.deploy.environmentGroup}}-overrides
                 optional: true
+            {{- end }}
             {{- range .Values.configMaps }}
             - configMapRef:
                 name: {{ .name }}
@@ -183,7 +185,7 @@ spec:
           {{- if .Values.aws_secrets.enabled }}      
           volumeMounts:
           - name: {{ include "base-app.serviceId" . }}-secrets
-            mountPath: "/app-secrets"
+            mountPath: "{{ .Values.aws_secrets.mountPath }}"
             readOnly: true             
           {{- end }}   
       {{- with .Values.nodeSelector }}
