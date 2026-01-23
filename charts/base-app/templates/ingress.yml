@@ -23,7 +23,7 @@ metadata:
   {{- with .Values.ingress.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
-    {{- if .Values.ingress.enable_wss }}
+    {{- if $.Values.ingress.enable_wss }}
     nginx.org/websocket-services: {{ $fullName }}
     {{- end}}
   {{- end }}
