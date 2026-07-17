@@ -25,6 +25,16 @@ entries:
   aire-mainback:
   - apiVersion: v2
     appVersion: "1.0"
+    created: "2026-07-17T20:12:21.958653228Z"
+    description: aire-mainback chart
+    digest: 8b9dd9f51dedb8f785f12aa72f541be29f8df4a369da90dd93b52cd37b93d682
+    name: aire-mainback
+    type: application
+    urls:
+    - https://github.com/Enerinvest/helm-charts/releases/download/aire-mainback-0.1.4/aire-mainback-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: "1.0"
     created: "2026-07-17T19:55:03.069710935Z"
     description: aire-mainback chart
     digest: a4277805dedfa6dd223988aa867aba764142114fc0f6f803d995139a473c07fa
@@ -54,6 +64,16 @@ entries:
     - https://github.com/Enerinvest/helm-charts/releases/download/aire-mainback-0.1.1/aire-mainback-0.1.1.tgz
     version: 0.1.1
   aire-mainfront:
+  - apiVersion: v2
+    appVersion: "1.0"
+    created: "2026-07-17T20:12:22.108058669Z"
+    description: aire-mainfront chart
+    digest: 5b0b611985337378beda3a4fc6365f2d8264d7750af129c305f2245197936d01
+    name: aire-mainfront
+    type: application
+    urls:
+    - https://github.com/Enerinvest/helm-charts/releases/download/aire-mainfront-0.1.4/aire-mainfront-0.1.4.tgz
+    version: 0.1.4
   - apiVersion: v2
     appVersion: "1.0"
     created: "2026-07-17T19:55:03.286676687Z"
@@ -345,4 +365,4 @@ entries:
     urls:
     - https://github.com/Enerinvest/helm-charts/releases/download/base-app-0.0.3/base-app-0.0.3.tgz
     version: 0.0.3
-generated: "2026-07-17T19:55:03.286936935Z"
+generated: "2026-07-17T20:12:22.108206659Z"
