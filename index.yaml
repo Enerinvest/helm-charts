@@ -1,5 +1,27 @@
 apiVersion: v1
 entries:
+  aire-backend:
+  - apiVersion: v2
+    appVersion: "1.0"
+    created: "2026-07-17T18:44:17.049804697Z"
+    description: aire-backend chart
+    digest: c2523546fdcebd90c80ec20781cce73b285e1a6af619f906b6db149f18f3f8ad
+    name: aire-backend
+    type: application
+    urls:
+    - https://github.com/Enerinvest/helm-charts/releases/download/aire-backend-0.1.0/aire-backend-0.1.0.tgz
+    version: 0.1.0
+  aire-frontend:
+  - apiVersion: v2
+    appVersion: "1.0"
+    created: "2026-07-17T18:44:17.174438509Z"
+    description: aire-frontend chart
+    digest: e40c0d19f8288cc2bd15587d8bd00834b791c4d3846c8b1bdc17bf1cb5c76d18
+    name: aire-frontend
+    type: application
+    urls:
+    - https://github.com/Enerinvest/helm-charts/releases/download/aire-frontend-0.1.0/aire-frontend-0.1.0.tgz
+    version: 0.1.0
   base-app:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -261,4 +283,4 @@ entries:
     urls:
     - https://github.com/Enerinvest/helm-charts/releases/download/base-app-0.0.3/base-app-0.0.3.tgz
     version: 0.0.3
-generated: "2026-01-23T08:32:07.280290871Z"
+generated: "2026-07-17T18:44:17.174574942Z"
