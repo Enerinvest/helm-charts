@@ -4,7 +4,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 
 metadata:
-  name: {{ include "aire.appname" . }}
+  name: {{ include "aire.fullname" . }}
   namespace: {{ include "aire.namespace" . }}
 
   annotations:
@@ -16,7 +16,7 @@ spec:
   tls:
   - hosts:
     - {{ .Values.deploy.url }}
-    secretName: {{ include "aire.appname" . }}-tls
+    secretName: {{ include "aire.fullname" . }}-tls
 
   rules:
   - host: {{ .Values.deploy.url }}

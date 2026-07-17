@@ -4,12 +4,12 @@ apiVersion: v1
 kind: Service
 
 metadata:
-  name: redis-{{ .Values.deploy.instance }}
+  name: {{ include "aire.redis.name" . }}
   namespace: {{ include "aire.namespace" . }}
 
 spec:
   selector:
-    app: redis-{{ .Values.deploy.instance }}
+    app: {{ include "aire.redis.name" . }}
 
   ports:
   - port: 6379

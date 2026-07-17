@@ -6,7 +6,7 @@ metadata:
 
 spec:
   selector:
-    app: {{ include "aire.appname" . }}
+    app: {{ include "aire.fullname" . }}
 
   ports:
   - port: {{ .Values.service.port }}

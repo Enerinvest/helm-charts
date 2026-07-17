@@ -6,8 +6,8 @@
 {{ .Values.deploy.project }}-{{ .Values.deploy.app }}sidekiq-{{ .Values.deploy.instance }}
 {{- end }}
 
-{{- define "aire.appname" -}}
-{{ .Values.deploy.project }}-{{ .Values.deploy.app }}{{ .Values.deploy.service }}
+{{- define "aire.redis.name" -}}
+{{ .Values.deploy.project }}-{{ .Values.deploy.app }}redis-{{ .Values.deploy.instance }}
 {{- end }}
 
 {{- define "aire.namespace" -}}
@@ -15,5 +15,5 @@
 {{- end }}
 
 {{- define "aire.image" -}}
-{{ .Values.image.repository }}/{{ include "aire.appname" . }}:{{ .Values.deploy.version }}
+{{ .Values.image.repository }}/{{ .Values.deploy.project }}-{{ .Values.deploy.app }}{{ .Values.deploy.service }}:{{ .Values.deploy.version }}
 {{- end }}

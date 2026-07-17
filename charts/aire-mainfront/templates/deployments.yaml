@@ -9,12 +9,12 @@ spec:
 
   selector:
     matchLabels:
-      app: {{ include "aire.appname" . }}
+      app: {{ include "aire.fullname" . }}
 
   template:
     metadata:
       labels:
-        app: {{ include "aire.appname" . }}
+        app: {{ include "aire.fullname" . }}
 
     spec:
       containers:
