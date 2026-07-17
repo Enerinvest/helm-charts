@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "aire.fullname" . }}
+  namespace: {{ include "aire.namespace" . }}
+
+spec:
+  replicas: {{ .Values.replicaCount }}
+
+  selector:
+    matchLabels:
+      app: {{ include "aire.appname" . }}
+
+  template:
+    metadata:
+      labels:
+        app: {{ include "aire.appname" . }}
+
+    spec:
+      containers:
+      - name: {{ .Values.deploy.service }}
+
+        image: {{ include "aire.image" . }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+
+        envFrom:
+        {{- if .Values.configMap.enabled }}
+        - configMapRef:
+            name: {{ .Values.deploy.project }}-{{ .Values.deploy.instance }}-config
+        {{- end }}
+
+        ports:
+        - containerPort: {{ .Values.service.port }}

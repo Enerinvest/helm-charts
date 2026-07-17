@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: {{ include "aire.backend.name" . }}
+  namespace: {{ include "aire.namespace" . }}
+
+spec:
+  selector:
+    app: {{ include "aire.backend.name" . }}
+
+  ports:
+  - port: {{ .Values.backend.port }}
+    targetPort: {{ .Values.backend.port }}

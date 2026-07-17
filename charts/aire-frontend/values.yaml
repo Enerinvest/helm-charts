@@ -1,0 +1,29 @@
+deploy:
+  # project: aire
+  # app: main
+  # service: front
+  # instance: dev
+  # version: 803b605
+  # url: domain.com
+
+image:
+  repository: 315824893242.dkr.ecr.eu-west-1.amazonaws.com
+  pullPolicy: Always
+
+replicaCount: 1
+
+service:
+  port: 80
+
+configMap:
+  enabled: true
+
+ingress:
+  enabled: false
+  className: nginx
+
+  annotations:
+    acme.cert-manager.io/http01-edit-in-place: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-prod-issuer
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/proxy-body-size: 50m

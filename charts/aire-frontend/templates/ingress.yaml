@@ -1,0 +1,36 @@
+{{- if .Values.ingress.enabled }}
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+
+metadata:
+  name: {{ include "aire.appname" . }}
+  namespace: {{ include "aire.namespace" . }}
+
+  annotations:
+{{ toYaml .Values.ingress.annotations | indent 4 }}
+
+spec:
+  ingressClassName: {{ .Values.ingress.className }}
+
+  tls:
+  - hosts:
+    - {{ .Values.deploy.url }}
+    secretName: {{ include "aire.appname" . }}-tls
+
+  rules:
+  - host: {{ .Values.deploy.url }}
+
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+
+        backend:
+          service:
+            name: {{ include "aire.fullname" . }}
+
+            port:
+              number: {{ .Values.service.port }}
+
+{{- end }}

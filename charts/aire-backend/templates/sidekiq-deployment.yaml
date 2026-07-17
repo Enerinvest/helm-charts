@@ -1,0 +1,38 @@
+{{- if .Values.sidekiq.enabled }}
+
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: {{ include "aire.sidekiq.name" . }}
+  namespace: {{ include "aire.namespace" . }}
+
+spec:
+  replicas: {{ .Values.sidekiq.replicas }}
+
+  selector:
+    matchLabels:
+      app: {{ include "aire.sidekiq.name" . }}
+
+  template:
+    metadata:
+      labels:
+        app: {{ include "aire.sidekiq.name" . }}
+
+    spec:
+      containers:
+      - name: sidekiq
+
+        image: {{ include "aire.backend.image" . }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+
+        command:
+        - bundle
+        - exec
+        - sidekiq
+
+        envFrom:
+        - configMapRef:
+            name: {{ include "aire.configmap" . }}
+
+{{- end }}

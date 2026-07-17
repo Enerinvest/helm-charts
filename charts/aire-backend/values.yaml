@@ -1,0 +1,40 @@
+deploy:
+  # project: aire
+  # app: backend
+  # instance: dev
+  # version: 803b605
+
+image:
+  repository: 315824893242.dkr.ecr.eu-west-1.amazonaws.com
+  pullPolicy: Always
+
+backend:
+  replicas: 1
+  port: 3000
+
+  readinessProbe:
+    path: /api/health
+    initialDelaySeconds: 20
+    periodSeconds: 10
+
+  livenessProbe:
+    path: /api/health
+    initialDelaySeconds: 60
+    periodSeconds: 20
+
+sidekiq:
+  enabled: true
+  replicas: 1
+
+redis:
+  enabled: true
+  image: redis:7-alpine
+  pullPolicy: IfNotPresent
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi

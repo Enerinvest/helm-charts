@@ -1,0 +1,47 @@
+{{- if .Values.redis.enabled }}
+
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: redis
+  namespace: {{ include "aire.namespace" . }}
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: redis
+
+  template:
+    metadata:
+      labels:
+        app: redis
+
+    spec:
+      containers:
+      - name: redis
+
+        image: {{ .Values.redis.image }}
+        imagePullPolicy: {{ .Values.redis.pullPolicy }}
+
+        args:
+        - --appendonly
+        - "yes"
+
+        ports:
+        - containerPort: 6379
+
+        resources:
+{{ toYaml .Values.redis.resources | indent 10 }}
+
+        volumeMounts:
+        - name: redis-data
+          mountPath: /data
+
+      volumes:
+      - name: redis-data
+        emptyDir: {}
+
+{{- end }}
