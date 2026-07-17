@@ -1,18 +1,18 @@
-# {{- if .Values.redis.enabled }}
+{{- if .Values.redis.enabled }}
 
-# apiVersion: v1
-# kind: Service
+apiVersion: v1
+kind: Service
 
-# metadata:
-#   name: redis
-#   namespace: {{ include "aire.namespace" . }}
+metadata:
+  name: redis-{{ .Values.deploy.instance }}
+  namespace: {{ include "aire.namespace" . }}
 
-# spec:
-#   selector:
-#     app: redis
+spec:
+  selector:
+    app: redis-{{ .Values.deploy.instance }}
 
-#   ports:
-#   - port: 6379
-#     targetPort: 6379
+  ports:
+  - port: 6379
+    targetPort: 6379
 
-# {{- end }}
+{{- end }}

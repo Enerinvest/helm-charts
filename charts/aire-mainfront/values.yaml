@@ -19,7 +19,7 @@ configMap:
   enabled: true
 
 ingress:
-  enabled: false
+  enabled: true
   className: nginx
 
   annotations:

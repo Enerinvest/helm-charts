@@ -4,7 +4,7 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: redis
+  name: redis-{{ .Values.deploy.instance }}
   namespace: {{ include "aire.namespace" . }}
 
 spec:
@@ -12,12 +12,12 @@ spec:
 
   selector:
     matchLabels:
-      app: redis
+      app: redis-{{ .Values.deploy.instance }}
 
   template:
     metadata:
       labels:
-        app: redis
+        app: redis-{{ .Values.deploy.instance }}
 
     spec:
       containers:
