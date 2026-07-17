@@ -26,6 +26,9 @@ sidekiq:
   enabled: true
   replicas: 1
 
+configMap:
+  enabled: true
+
 redis:
   enabled: true
   image: redis:7-alpine

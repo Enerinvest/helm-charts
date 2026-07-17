@@ -1,5 +1,9 @@
-{{- define "aire.fullname" -}}
+{{- define "aire.backend.name" -}}
 {{ .Values.deploy.project }}-{{ .Values.deploy.app }}{{ .Values.deploy.service }}-{{ .Values.deploy.instance }}
+{{- end }}
+
+{{- define "aire.sidekiq.name" -}}
+{{ .Values.deploy.project }}-{{ .Values.deploy.app }}sidekiq-{{ .Values.deploy.instance }}
 {{- end }}
 
 {{- define "aire.appname" -}}

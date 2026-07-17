@@ -23,7 +23,7 @@ spec:
       containers:
       - name: sidekiq
 
-        image: {{ include "aire.backend.image" . }}
+        image: {{ include "aire.image" . }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
 
         command:
@@ -32,7 +32,9 @@ spec:
         - sidekiq
 
         envFrom:
+        {{- if .Values.configMap.enabled }}
         - configMapRef:
-            name: {{ include "aire.configmap" . }}
+            name: {{ .Values.deploy.project }}-{{ .Values.deploy.instance }}-config
+        {{- end }}
 
 {{- end }}

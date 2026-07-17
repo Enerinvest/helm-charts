@@ -21,26 +21,28 @@ spec:
       containers:
       - name: web
 
-        image: {{ include "aire.backend.image" . }}
+        image: {{ include "aire.image" . }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
 
         ports:
         - containerPort: {{ .Values.backend.port }}
 
         envFrom:
+        {{- if .Values.configMap.enabled }}
         - configMapRef:
-            name: {{ include "aire.configmap" . }}
+            name: {{ .Values.deploy.project }}-{{ .Values.deploy.instance }}-config
+        {{- end }}
 
-        readinessProbe:
-          httpGet:
-            path: {{ .Values.backend.readinessProbe.path }}
-            port: {{ .Values.backend.port }}
-          initialDelaySeconds: {{ .Values.backend.readinessProbe.initialDelaySeconds }}
-          periodSeconds: {{ .Values.backend.readinessProbe.periodSeconds }}
+        # readinessProbe:
+        #   httpGet:
+        #     path: {{ .Values.backend.readinessProbe.path }}
+        #     port: {{ .Values.backend.port }}
+        #   initialDelaySeconds: {{ .Values.backend.readinessProbe.initialDelaySeconds }}
+        #   periodSeconds: {{ .Values.backend.readinessProbe.periodSeconds }}
 
-        livenessProbe:
-          httpGet:
-            path: {{ .Values.backend.livenessProbe.path }}
-            port: {{ .Values.backend.port }}
-          initialDelaySeconds: {{ .Values.backend.livenessProbe.initialDelaySeconds }}
-          periodSeconds: {{ .Values.backend.livenessProbe.periodSeconds }}
+        # livenessProbe:
+        #   httpGet:
+        #     path: {{ .Values.backend.livenessProbe.path }}
+        #     port: {{ .Values.backend.port }}
+        #   initialDelaySeconds: {{ .Values.backend.livenessProbe.initialDelaySeconds }}
+        #   periodSeconds: {{ .Values.backend.livenessProbe.periodSeconds }}
