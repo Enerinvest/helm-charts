@@ -41,3 +41,7 @@ redis:
     limits:
       cpu: 500m
       memory: 512Mi
+
+serviceAccount:
+  awsAccountId: "315824893242"
+  IamRole: "none"

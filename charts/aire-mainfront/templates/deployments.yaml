@@ -17,6 +17,7 @@ spec:
         app: {{ include "aire.fullname" . }}
 
     spec:
+      serviceAccountName: {{ include "aire.fullname" . }}      
       containers:
       - name: {{ .Values.deploy.service }}
 

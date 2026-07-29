@@ -18,6 +18,7 @@ spec:
         app: {{ include "aire.backend.name" . }}
 
     spec:
+      serviceAccountName: {{ include "aire.backend.name" . }}
       containers:
       - name: web
 
